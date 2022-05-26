@@ -1,61 +1,59 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { create } from 'domain';
-import { Cliente, ClienteService } from 'src/app/servicos/cliente.service';
-import { ModalClientePage } from '../modal-cliente/modal-cliente.page';
+import { Produto, ProdutoService } from 'src/app/servicos/produto.service';
+import { ModalProdutoPage } from '../modal-produto/modal-produto.page';
 
 @Component({
-  selector: 'app-cliente',
-  templateUrl: './cliente.page.html',
-  styleUrls: ['./cliente.page.scss'],
+  selector: 'app-produto',
+  templateUrl: './produto.page.html',
+  styleUrls: ['./produto.page.scss'],
 })
-export class ClientePage implements OnInit {
+export class ProdutoPage implements OnInit {
 
-  clientes: Cliente[];
+  produtos: Produto[];
 
-  constructor( private service: ClienteService, private modalCtrl: ModalController) { }
+  constructor( private service: ProdutoService, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.service.getAll().subscribe(resposta => {
-      this.clientes = resposta;
-    })
+      this.produtos = resposta;
+    });
   }
 
   remover(id: any){
     this.service.remove(id).subscribe(() => {
       this.service.getAll().subscribe(resposta => {
-        this.clientes = resposta;
+        this.produtos = resposta;
       });
     });
   }
 
-  novoCliente(){
+  novoProduto(){
     this.modalCtrl.create({
-      component: ModalClientePage
+      component: ModalProdutoPage
     }).then(modal => {
       modal.present();
       return modal.onDidDismiss();
     }).then(({data}) => {
       this.service.getAll().subscribe(resposta => {
-        this.clientes = resposta;
+        this.produtos = resposta;
       });
     });
   }
 
-  atualizar(c:Cliente){
+
+  atualizar(p:Produto){
     this.modalCtrl.create({
-      component: ModalClientePage,
-      componentProps: {c}
+      component: ModalProdutoPage,
+      componentProps: {p}
     }).then(modal => {
       modal.present();
       return modal.onDidDismiss();
     }).then(({data}) => {
       this.service.getAll().subscribe(resposta => {
-        this.clientes = resposta;
+        this.produtos = resposta;
       })
     })
   }
-
-  
 
 }

@@ -14,6 +14,18 @@ const routes: Routes = [
   {
     path: 'cliente',
     loadChildren: () => import('./paginas/cliente/cliente.module').then( m => m.ClientePageModule)
+  },
+  {
+    path: 'modal-cliente',
+    loadChildren: () => import('./paginas/modal-cliente/modal-cliente.module').then( m => m.ModalClientePageModule)
+  },
+  {
+    path: 'produto',
+    loadChildren: () => import('./paginas/produto/produto.module').then( m => m.ProdutoPageModule)
+  },
+  {
+    path: 'modal-produto',
+    loadChildren: () => import('./paginas/modal-produto/modal-produto.module').then( m => m.ModalProdutoPageModule)
   }
 ];
 
