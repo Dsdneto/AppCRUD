@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { ClienteService } from 'src/app/servicos/cliente.service';
 import { Produto, ProdutoService } from 'src/app/servicos/produto.service';
 
 @Component({
@@ -9,6 +8,7 @@ import { Produto, ProdutoService } from 'src/app/servicos/produto.service';
   templateUrl: './modal-produto.page.html',
   styleUrls: ['./modal-produto.page.scss'],
 })
+
 export class ModalProdutoPage implements OnInit {
   
   @Input() p: Produto;
@@ -33,15 +33,15 @@ export class ModalProdutoPage implements OnInit {
   }
 
   enviarFormulario(form: NgForm){
-    const cliente = form.value;
+    const produto = form.value;
     if(this.atualizar){
-      this.service.update(cliente, this.p.id).subscribe(resposta => {
+      this.service.update(produto, this.p.id).subscribe(resposta => {
         this.modalCtrl.dismiss(resposta);
-    });
+    })
     }else{
-      this.service.create(cliente).subscribe(resposta => {
+      this.service.create(produto).subscribe(resposta => {
         this.modalCtrl.dismiss();
-      });
+      })
     }
   }
 

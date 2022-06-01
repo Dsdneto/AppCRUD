@@ -12,6 +12,7 @@ export class ModalClientePage implements OnInit {
 
   @Input() c: Cliente;
   atualizar = false;
+  
   dadosCliente = {
     nome:'',
     telefone: '',

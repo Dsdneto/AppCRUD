@@ -9,7 +9,7 @@ export interface Cliente{
 }
 
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 
@@ -32,7 +32,7 @@ export class ClienteService {
   }
 
   update(cliente: Cliente, id: any){
-    return this.htpp.put(this.url+'?id' + id, cliente);
+    return this.htpp.put(this.url+'?id=' + id, cliente);
   }
 
 }

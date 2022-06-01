@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { create } from 'domain';
 import { Cliente, ClienteService } from 'src/app/servicos/cliente.service';
 import { ModalClientePage } from '../modal-cliente/modal-cliente.page';
 
@@ -9,6 +8,7 @@ import { ModalClientePage } from '../modal-cliente/modal-cliente.page';
   templateUrl: './cliente.page.html',
   styleUrls: ['./cliente.page.scss'],
 })
+
 export class ClientePage implements OnInit {
 
   clientes: Cliente[];
@@ -18,7 +18,7 @@ export class ClientePage implements OnInit {
   ngOnInit() {
     this.service.getAll().subscribe(resposta => {
       this.clientes = resposta;
-    })
+    });
   }
 
   remover(id: any){
@@ -52,8 +52,8 @@ export class ClientePage implements OnInit {
     }).then(({data}) => {
       this.service.getAll().subscribe(resposta => {
         this.clientes = resposta;
-      })
-    })
+      });
+    });
   }
 
   

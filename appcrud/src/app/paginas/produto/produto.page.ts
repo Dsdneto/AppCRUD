@@ -8,6 +8,7 @@ import { ModalProdutoPage } from '../modal-produto/modal-produto.page';
   templateUrl: './produto.page.html',
   styleUrls: ['./produto.page.scss'],
 })
+
 export class ProdutoPage implements OnInit {
 
   produtos: Produto[];
@@ -52,8 +53,8 @@ export class ProdutoPage implements OnInit {
     }).then(({data}) => {
       this.service.getAll().subscribe(resposta => {
         this.produtos = resposta;
-      })
-    })
+      });
+    });
   }
 
 }

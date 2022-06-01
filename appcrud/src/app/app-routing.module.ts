@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'modal-produto',
     loadChildren: () => import('./paginas/modal-produto/modal-produto.module').then( m => m.ModalProdutoPageModule)
+  },  {
+    path: 'home',
+    loadChildren: () => import('./paginas/home/home.module').then( m => m.HomePageModule)
   }
+
 ];
 
 @NgModule({

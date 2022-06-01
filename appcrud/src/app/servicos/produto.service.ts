@@ -7,31 +7,30 @@ export interface Produto{
   valor: number;
 }
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
+
 export class ProdutoService {
 
-  private url = 'http://localhost/apiAppCrud/apiCliente.php';
+  private url = 'http://localhost/apiAppCrud/apiProduto.php';
 
-
-  constructor( private http: HttpClient) { }
+  constructor(private htpp: HttpClient) { }
 
   getAll(){
-    return this.http.get<[Produto]>(this.url);
+    return this.htpp.get<[Produto]>(this.url);
   }
 
   remove(id: any){
-    return this.http.delete(this.url+'?id=' + id);
+    return this.htpp.delete(this.url+'?id=' + id);
   }
 
   create(produto: Produto){
-    return this.http.post(this.url, produto);
+    return this.htpp.post(this.url, produto);
   }
 
   update(produto: Produto, id: any){
-    return this.http.put(this.url+'?id' + id, produto);
+    return this.htpp.put(this.url+'?id=' + id, produto);
   }
-
 
 }
